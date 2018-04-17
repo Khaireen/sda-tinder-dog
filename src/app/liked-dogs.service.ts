@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { DogCeoResponse } from './DogCeoResponse';
 
 @Injectable()
 export class LikedDogsService {
@@ -9,7 +10,7 @@ export class LikedDogsService {
   }
 
   drawRandomDog() {
-    this.httpClient.get('https://dog.ceo/api/breed/hound/images/random').subscribe((result) => {
+    this.httpClient.get<DogCeoResponse>('https://dog.ceo/api/breed/hound/images/random').subscribe((result) => {
       this.currentDogImageUrl = result.message;
     });
   }
